@@ -1,6 +1,6 @@
 #ifndef _M304_H_
 #define _M304_H_
-#define _M304_H_V  110
+#define _M304_H_V  108
 
 #include <avr/pgmspace.h>
 #include <LiquidCrystal.h>

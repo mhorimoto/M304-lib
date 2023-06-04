@@ -40,14 +40,6 @@ void m304Init(void) {
   for ( i=0;i<6;i++ ) {
     st_m.mac[i] = atmem.read(LC_MAC+i);
   }
-  for ( i=0;i<8;i++ ) {
-    digitalWrite(RLY1+i,LOW);
-  }
-  delay(2000);
-  for ( i=0;i<8;i++ ) {
-    digitalWrite(RLY1+i,HIGH);
-  }
-  
 }
 
 /*********************************/
@@ -191,10 +183,6 @@ int LCDd::IntRead(int p,int x,int y,int w) {
     c[i] = LCDd::tarea[p][x+i][y];
   }
   c[i]=(char)NULL;
-  //  Serial.begin(115200);
-  //  Serial.print("IntRead=");
-  //  Serial.println(c);
-  //  Serial.end();
   i = atoi(c);
   return(i);
 }
@@ -227,10 +215,8 @@ void LCDd::TextWrite(int p,int x,int y,char a[]) {
 void LCDd::IntWrite(int p,int x,int y,int w,bool zp,int a) {
   int i;
   char sv[6],fmt[5];
-  //  Serial.begin(115200);
   if ((w < 1) || (w > 5)) {
-    //    Serial.println("w out of range");
-    //    Serial.end();
+    //    w out of range
     return;
   }
   if (p >= PAGECNT) return;
@@ -240,9 +226,6 @@ void LCDd::IntWrite(int p,int x,int y,int w,bool zp,int a) {
     snprintf(fmt,4,"%%%dd",w);
   }
   snprintf(sv,w+1,fmt,a);
-  //  Serial.print("IntWrite sv=");
-  //  Serial.println(sv);
-  //  Serial.end();
 
   for(int i=0;i<w;i++) {
     LCDd::setWriteChar(p,x+i,y,sv[i]);
