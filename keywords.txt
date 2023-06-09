@@ -5,8 +5,25 @@
 ################################################
 # Datatypes (KEYWORD1)
 ################################################
+stM304	KEYWORD1
+KYBDMEM	KEYWORD1
 
 ################################################
 # Methods and Functions (KEYWORD2)
 ################################################
 
+initWriteArea		KEYWORD2
+setWriteChar		KEYWORD2
+getDataInt		KEYWORD2
+setLine		KEYWORD2
+IntRead		KEYWORD2
+CharRead		KEYWORD2
+LineWrite		KEYWORD2
+PageWrite		KEYWORD2
+CharWrite		KEYWORD2
+IntWrite		KEYWORD2
+TextWrite		KEYWORD2
+IPWrite		KEYWORD2
+IPWriteWithCidr		KEYWORD2
+m304Init		KEYWORD2
+debug_print		KEYWORD2
