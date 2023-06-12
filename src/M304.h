@@ -1,6 +1,6 @@
 #ifndef _M304_H_
 #define _M304_H_
-#define _M304_H_V  120
+#define _M304_H_V  130
 
 #include <avr/pgmspace.h>
 #include <LiquidCrystal.h>
@@ -82,6 +82,9 @@
 #define AT24LC254_ADDR   0x50
 #define AT24LC254_INDEX  0
 
+/*** UECS TEXT ***/
+#define CCMFMT "<?xml version=\"1.0\"?><UECS ver=\"1.00-E10\"><DATA type=\"%s\" room=\"%d\" region=\"%d\" order=\"%d\" priority=\"%d\">%s</DATA><IP>%s</IP></UECS>"
+
 /*** EEPROM LOWCORE ASSIGN ***/
 #define LC_UECS_ID  0
 #define LC_MAC      6
@@ -110,6 +113,16 @@ typedef struct stM304 {
   IPAddress subnet;
   int cidr;
 };
+
+/*** EEPROM 0x0100..0x02ff ***/
+typedef struct uecsM304 {
+  bool enable;
+  byte room;
+  byte region;
+  int  order;
+  byte priority;
+  char ccm_type[20];
+};  //  32bytes/1unit
 
 /*  Cross Key Switch */
 
@@ -174,9 +187,9 @@ class LCDd : public LiquidCrystal {
 #endif
 
 #ifndef _M304_CPP_
-    extern void m304Init(void);
-    extern void debug_print(void);
-  #endif
+  extern void m304Init(void);
+  extern void debug_print(void);
+#endif
   extern stM304 st_m;
   extern LiquidCrystal lcd;
   extern AT24C256      atmem;
