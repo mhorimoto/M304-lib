@@ -1,6 +1,6 @@
 #ifndef _M304_H_
 #define _M304_H_
-#define _M304_H_V  130
+#define _M304_H_V  132
 
 #include <avr/pgmspace.h>
 #include <LiquidCrystal.h>
@@ -86,12 +86,19 @@
 #define CCMFMT "<?xml version=\"1.0\"?><UECS ver=\"1.00-E10\"><DATA type=\"%s\" room=\"%d\" region=\"%d\" order=\"%d\" priority=\"%d\">%s</DATA><IP>%s</IP></UECS>"
 
 /*** EEPROM LOWCORE ASSIGN ***/
-#define LC_UECS_ID  0
-#define LC_MAC      6
-#define LC_START    0x20
-#define LC_DBGMSG   0x80  /* bit pos 0x80: Serial out, 0x40: LCD out */
+#define LC_UECS_ID        0x00
+#define LC_MAC            0x06
+#define FIX_DHCP_FLAG     0x0c
+#define FIXED_IPADDRESS   0x10
+#define FIXED_NETMASK     0x14
+#define FIXED_DEFGW       0x18
+#define FIXED_DNS         0x1c
+#define VENDER_NAME       0x40
+#define NODE_NAME         0x50
+#define LC_DBGMSG         0x60  /* bit pos 0x80: Serial out, 0x40: LCD out */
 #define   SO_MSG    0x80
 #define   LCD_MSG   0x40
+#define LC_START          0x80
 #define LC_SCH_START 0x1000
 #define   STHR       0x0
 #define   STMN       0x1
