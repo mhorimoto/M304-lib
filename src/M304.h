@@ -1,6 +1,6 @@
 #ifndef _M304_H_
 #define _M304_H_
-#define _M304_H_V  132
+#define _M304_H_V  134
 
 #include <avr/pgmspace.h>
 #include <LiquidCrystal.h>
@@ -100,19 +100,19 @@
 #define   LCD_MSG   0x40
 #define LC_START          0x80
 #define LC_SCH_START 0x1000
-#define   STHR       0x0
-#define   STMN       0x1
-#define   EDHR       0x2
-#define   EDMN       0x3
-#define   INMN       0x4
-#define   DUMN       0x5
-#define   RLY_L      0xe
-#define   RLY_H      0xf
+#define   STHR       0x0  // Start of time (Hour) and validation flag
+#define   STMN       0x1  // Start of time (minute)
+#define   EDHR       0x2  // End of time (hour)
+#define   EDMN       0x3  // End of time (minute)
+#define   INMN       0x4  // Interval time (mins)
+#define   DUMN       0x5  // During time (mins)
+#define   RLY_L      0xe  // RLY 1..4
+#define   RLY_H      0xf  // RLY 5..8
 #define LC_END      0x7fff
 
 typedef struct stM304 {
   byte mac[6];
-  boolean dhcpflag=true;
+  bool dhcpflag=true;
   byte set_ip[4];
   IPAddress ip;
   IPAddress gw;
@@ -121,15 +121,30 @@ typedef struct stM304 {
   int cidr;
 };
 
-/*** EEPROM 0x0100..0x02ff ***/
+/*** EEPROM 0x1000..0x2900 CCM DATA ***/
 typedef struct uecsM304 {
-  bool enable;
-  byte room;
-  byte region;
-  int  order;
-  byte priority;
-  char ccm_type[20];
-};  //  32bytes/1unit
+  byte valid;        // 0x00
+  byte room;         // 0x01
+  byte region;       // 0x02
+  uint16_t order;    // 0x03
+  byte priority;     // 0x05
+  byte lv;           // 0x06
+  byte cast;         // 0x07
+  byte sr;           // 0x08
+  char ccm_type[20]; // 0x09 ASCIZ
+  char unit[10];     // 0x1d ASCIZ
+  byte sthr;         // 0x27
+  byte stmn;         // 0x28
+  byte edhr;         // 0x29
+  byte edmn;         // 0x2a
+  byte inmn;         // 0x2b
+  byte dumn;         // 0x2c
+  byte rly_l;        // 0x2d
+  byte rly_h;        // 0x2e
+  byte alignment;    // 0x2f
+  byte dummy[16];    // 0x30-0x3f
+};  // 64bytes/1unit
+
 
 /*  Cross Key Switch */
 
