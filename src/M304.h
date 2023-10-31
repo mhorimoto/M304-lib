@@ -1,6 +1,6 @@
 #ifndef _M304_H_
 #define _M304_H_
-#define _M304_H_V  134
+#define _M304_H_V  135
 
 #include <avr/pgmspace.h>
 #include <LiquidCrystal.h>
@@ -109,6 +109,18 @@
 #define   RLY_L      0xe  // RLY 1..4
 #define   RLY_H      0xf  // RLY 5..8
 #define LC_END      0x7fff
+
+/*** LV define ***/
+#define LV_A1S0    1      // A-1S-0
+#define LV_A1S1    2      // A-1S-1
+#define LV_A10S0   3      // A-10S-0
+#define LV_A10S1   4      // A-10S-1
+#define LV_A1M0    5      // A-1M-0
+#define LV_A1M1    6      // A-1M-1
+#define LV_B0      7      // B-0
+#define LV_B1      8      // B-1
+#define LV_S1S0    9      // S-1S-0
+#define LV_S1M0   10      // S-1M-0
 
 typedef struct stM304 {
   byte mac[6];
