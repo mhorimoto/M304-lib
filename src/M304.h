@@ -130,13 +130,11 @@
 #define   LC_CPXCONDS     0x30 // Complex Conditions 16bytes but current 8bytes
 #define   LC_CONDVAL1     0x30 // Condition compare value 1
 #define   LC_CONDEXP2     0x31 // Conditional Expression 2
-#define   LC_CONDVAL2     0x32 // Condition compare value 1
-#define   LC_CONDEXP3     0x33 // Conditional Expression 2
-#define   LC_CONDVAL3     0x34 // Condition compare value 1
-#define   LC_CONDEXP4     0x35 // Conditional Expression 2
-#define   LC_CONDVAL4     0x36 // Condition compare value 1
-
-
+#define   LC_CONDVAL2     0x32 // Condition compare value 2
+#define   LC_CONDEXP3     0x33 // Conditional Expression 3
+#define   LC_CONDVAL3     0x34 // Condition compare value 3
+#define   LC_CONDEXP4     0x35 // Conditional Expression 4
+#define   LC_CONDVAL4     0x36 // Condition compare value 4
 
 #define LC_SCH_REC_SIZE   0x40 // reserve to 0x3f step by 0x40
 #define LC_SEND_START 0x3000   // CCM for data sending (for example cnd.aMC)
