@@ -15,3 +15,21 @@ Development of hardware and software that everyone can use.
 
 ![M304](fig/fig-01.jpg)
 
+## Need Other libraries for Make
+
+|  Used library | Version | Path                                        |
+|:-------------:|:-------:|:--------------------------------------------|
+| LiquidCrystal | 1.0.7   | libraries/LiquidCrystal                     |
+| SPI           | 1.0     | arduino/hardware/avr/1.8.6/libraries/SPI    |
+| Ethernet2     | 1.0.4   | libraries/Ethernet2                         |
+| EEPROM        | 2.0     | arduino/hardware/avr/1.8.6/libraries/EEPROM |
+| AT24Cx        |         | libraries/AT24Cx                            |
+| Wire          | 1.0     | arduino/hardware/avr/1.8.6/libraries/Wire   |
+| DS1307RTC     | 1.4.1   | libraries/DS1307RTC                         |
+| Time          | 1.6.1   | libraries/Time                              |
+| LibYxml       | 1.0.2   | libraries/LibYxml                           |
+
+
+| Used platform | Version | Path                      |
+|:-------------:|:-------:|:--------------------------|
+| arduino:avr   | 1.8.6   |arduino/hardware/avr/1.8.6 |

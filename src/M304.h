@@ -1,6 +1,6 @@
 #ifndef _M304_H_
 #define _M304_H_
-#define _M304_H_V  135
+#define _M304_H_V  1315
 
 #include <avr/pgmspace.h>
 #include <LiquidCrystal.h>
@@ -23,6 +23,13 @@
 #define CHANGE_MAKE  2
 #define CHANGE_BREAK 3
 
+/*** Mode via httpd ***/
+
+#define MD_HT_IGNORE  0
+#define MD_HT_STORE   1
+#define MD_HT_FETCH   2
+#define MD_HT_END     3
+#define MD_HT_REMOCON 4
 
 /*** CMODE ***/
 
@@ -95,19 +102,56 @@
 #define FIXED_DNS         0x1c
 #define VENDER_NAME       0x40
 #define NODE_NAME         0x50
-#define LC_DBGMSG         0x60  /* bit pos 0x80: Serial out, 0x40: LCD out */
+#define LC_DBGMSG         0x60  /* bit pos 0x80: Serial out, 0x40: LCD out, 0x20: Info Serial out */
 #define   SO_MSG    0x80
 #define   LCD_MSG   0x40
-#define LC_START          0x80
+#define   SO_INFO   0x02
+#define LC_CMODE          0x62  /* Force CMODE Change */
+
 #define LC_SCH_START 0x1000
-#define   STHR       0x0  // Start of time (Hour) and validation flag
-#define   STMN       0x1  // Start of time (minute)
-#define   EDHR       0x2  // End of time (hour)
-#define   EDMN       0x3  // End of time (minute)
-#define   INMN       0x4  // Interval time (mins)
-#define   DUMN       0x5  // During time (mins)
-#define   RLY_L      0xe  // RLY 1..4
-#define   RLY_H      0xf  // RLY 5..8
+#define   LC_VALID        0x00 // Valid Flag (0x01:valid, 0xff:invalid)
+#define   LC_ROOM         0x01
+#define   LC_REGION       0x02
+#define   LC_ORDER        0x03
+#define   LC_PRIORITY     0x05
+#define   LC_LV           0x06 // reference LV define
+#define   LC_CAST         0x07
+#define   LC_SR           0x08
+#define   LC_CCMTYPE      0x09 // char[20]
+#define   LC_UNIT         0x1d // char[10]
+#define   LC_STHR         0x27 // Start of time (Hour) and validation flag
+#define   LC_STMN         0x28 // Start of time (minute)
+#define   LC_EDHR         0x29 // End of time (hour)
+#define   LC_EDMN         0x2a // End of time (minute)
+#define   LC_INMN         0x2b // Interval time (mins)
+#define   LC_DUMN         0x2c // During time (mins)
+#define   LC_RLY_L        0x2d // RLY 1..4
+#define   LC_RLY_H        0x2e // RLY 5..8
+#define   LC_CPXCONDS     0x30 // Complex Conditions 16bytes but current 8bytes
+#define   LC_CONDVAL1     0x30 // Condition compare value 1
+#define   LC_CONDEXP2     0x31 // Conditional Expression 2
+#define   LC_CONDVAL2     0x32 // Condition compare value 1
+#define   LC_CONDEXP3     0x33 // Conditional Expression 2
+#define   LC_CONDVAL3     0x34 // Condition compare value 1
+#define   LC_CONDEXP4     0x35 // Conditional Expression 2
+#define   LC_CONDVAL4     0x36 // Condition compare value 1
+
+
+
+#define LC_SCH_REC_SIZE   0x40 // reserve to 0x3f step by 0x40
+#define LC_SEND_START 0x3000   // CCM for data sending (for example cnd.aMC)
+#define LC_SEND_REC_SIZE  0x40 // reserve to 0x3f step by 0x40
+#define LC_CMPOPE_START 0x5000 // Compare Operators
+#define LC_CMPOPE_REC_SIZE 0x20 //
+#define   LC_COPE_VALID    0x00
+#define   LC_COPE_ROOM     0x01
+#define   LC_COPE_REGION   0x02
+#define   LC_COPE_ORDER    0x03
+#define   LC_COPE_LIFECNT  0x05
+#define   LC_COPE_CCMTYPE  0x06
+#define   LC_COPE_OPE      0x1a
+#define   LC_COPE_FVAL     0x1b
+#define   LC_COPE_RESULT   0x1f
 #define LC_END      0x7fff
 
 /*** LV define ***/
@@ -154,9 +198,42 @@ typedef struct uecsM304 {
   byte rly_l;        // 0x2d
   byte rly_h;        // 0x2e
   byte alignment;    // 0x2f
-  byte dummy[16];    // 0x30-0x3f
+  byte dummy[16];    // 0x30-0x3f   // relational operations are written here.
 };  // 64bytes/1unit
 
+/*** EEPROM Relational Operators DATA ***/
+typedef struct uecsM304cmpope {
+  byte valid;        // 0x00
+  byte room;         // 0x01
+  byte region;       // 0x02
+  uint16_t order;    // 0x03
+  byte lifecnt;      // 0x05 sec
+  char ccm_type[20]; // 0x06 ASCIZ
+  byte cmpope;       // 0x1a
+  float fval;        // 0x1b
+  // LAST            // 0x1f
+};  // 32bytes/1unit
+
+// Relational Operators
+
+#define R_NULL   0
+#define R_EQ     1     // == Equal
+#define R_GT     2     // >  Greater Than
+#define R_LT     3     // <  Less Than
+#define R_GE     4     // >= Greater Than Equal
+#define R_LE     5     // <= Less Than Equal
+#define R_AND    6     // &  Logical AND
+#define R_OR     7     // |  Logical OR
+#define R_NE     8     // != Not Equal
+#define R_ADDFLG 0x80
+
+/*  Relay operation          */
+/*  Group semi 20230615 p.9  */
+
+#define RLY_DNTCARE 0x00
+#define RLY_NA      0x01
+#define RLY_BREAK   0x02
+#define RLY_MAKE    0x03
 
 /*  Cross Key Switch */
 
