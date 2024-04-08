@@ -1,6 +1,9 @@
 # M304-lib
 M304 Libraries
 
+Ver: 1.3.15
+
+
 ## Objectives
 
 A stumbling block to smart farming diffusion
@@ -33,3 +36,7 @@ Development of hardware and software that everyone can use.
 | Used platform | Version | Path                      |
 |:-------------:|:-------:|:--------------------------|
 | arduino:avr   | 1.8.6   |arduino/hardware/avr/1.8.6 |
+
+## How to use this library
+
+Details will be described in the future.
