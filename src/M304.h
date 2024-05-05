@@ -108,6 +108,42 @@
 #define   SO_INFO   0x02
 #define LC_CMODE          0x62  /* Force CMODE Change */
 
+#if M304V3 // Ver 3.x.x以降のメモリマップ
+#define LC_SCH_START 0x1000
+#define   LC_VALID        0x00 // Valid Flag (0x01:valid, 0xff:invalid)
+#define   LC_STHR         0x01 // Start of time (Hour) and validation flag
+#define   LC_STMN         0x02 // Start of time (minute)
+#define   LC_EDHR         0x03 // End of time (hour)
+#define   LC_EDMN         0x04 // End of time (minute)
+#define   LC_MNFLAG       0x05 // MINUTES/SECONDS FLAG (FF:MINUTES,00:SECONDS)
+#define   LC_INMN         0x06 // Interval time (mins/sec) unsigned int (2bytes)
+#define   LC_DUMN         0x08 // During time (mins/sec) unsigned int (2bytes)
+//define  LC_DUMMY        0x09-0x0d (5bytes)
+#define   LC_RLY_L        0x0e // RLY 1..4
+#define   LC_RLY_H        0x0f // RLY 5..8
+#define   LC_CPXCONDS     0x10 // Complex Conditions 16bytes but current 8bytes
+
+#define   LC_CMPCCM1      0x10 // compare value opeID 1 byte
+#define   LC_CMPOPE1      0x11 // relational operator 1 byte
+#define   LC_CMPVAL1      0x12 // Numerical values to compare 1 float (4bytes)
+
+#define   LC_CMBCMP2      0x16 // Combined expression-expression comparison operators 1
+#define   LC_CMPCCM2      0x17 // compare value opeID 1 byte
+#define   LC_CMPOPE2      0x18 // relational operator 1 byte
+#define   LC_CMPVAL2      0x19 // Numerical values to compare 1 float (4bytes)
+
+#define   LC_CMBCMP3      0x1d // Combined expression-expression comparison operators 1
+#define   LC_CMPCCM3      0x1e // compare value opeID 1 byte
+#define   LC_CMPOPE3      0x1f // relational operator 1 byte
+#define   LC_CMPVAL3      0x20 // Numerical values to compare 1 float (4bytes)
+
+#define   LC_CMBCMP4      0x24 // Combined expression-expression comparison operators 1
+#define   LC_CMPCCM4      0x25 // compare value opeID 1 byte
+#define   LC_CMPOPE4      0x26 // relational operator 1 byte
+#define   LC_CMPVAL4      0x27 // Numerical values to compare 1 float (4bytes)
+
+#else
+
 #define LC_SCH_START 0x1000
 #define   LC_VALID        0x00 // Valid Flag (0x01:valid, 0xff:invalid)
 #define   LC_ROOM         0x01
@@ -135,6 +171,7 @@
 #define   LC_CONDVAL3     0x34 // Condition compare value 3
 #define   LC_CONDEXP4     0x35 // Conditional Expression 4
 #define   LC_CONDVAL4     0x36 // Condition compare value 4
+#endif
 
 #define LC_SCH_REC_SIZE   0x40 // reserve to 0x3f step by 0x40
 #define LC_SEND_START 0x3000   // CCM for data sending (for example cnd.aMC)
