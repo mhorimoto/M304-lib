@@ -6,6 +6,8 @@
 # Datatypes (KEYWORD1)
 ################################################
 stM304	KEYWORD1
+uecsM304 KEYWORD1
+uecsM304cmpope KEYWORD1
 KYBDMEM	KEYWORD1
 
 ################################################
@@ -27,3 +29,7 @@ IPWrite		KEYWORD2
 IPWriteWithCidr		KEYWORD2
 m304Init		KEYWORD2
 debug_print		KEYWORD2
+getCrossKey		KEYWORD2
+CancelChattering	KEYWORD2
+debugMsgFlag		KEYWORD2
+mask2cidr		KEYWORD2

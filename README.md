@@ -1,5 +1,8 @@
-# M304-lib
-M304 Libraries
+# M304 Library
+M304 Library
+
+Ver: 1.3.16
+
 
 ## Objectives
 
@@ -33,3 +36,7 @@ Development of hardware and software that everyone can use.
 | Used platform | Version | Path                      |
 |:-------------:|:-------:|:--------------------------|
 | arduino:avr   | 1.8.6   |arduino/hardware/avr/1.8.6 |
+
+## How to use this library
+
+Details will be described in the future.

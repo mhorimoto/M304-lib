@@ -1,6 +1,6 @@
 #ifndef _M304_H_
 #define _M304_H_
-#define _M304_H_V  1315
+#define _M304_H_V  1316
 
 #include <avr/pgmspace.h>
 #include <LiquidCrystal.h>
@@ -267,6 +267,7 @@ typedef struct uecsM304cmpope {
 
 #define RLY_DNTCARE 0x00
 #define RLY_NA      0x01
+#define RLY_BOTH    0x01
 #define RLY_BREAK   0x02
 #define RLY_MAKE    0x03
 
