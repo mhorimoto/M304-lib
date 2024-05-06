@@ -310,12 +310,6 @@ int mask2cidr(IPAddress nma) {
   int ci,tb;
   ci=0;
   for (tb=0;tb<4;tb++) {
-    //    Serial.begin(115200);
-    //    Serial.print("mask2cidr=");
-    //    Serial.print(nma[tb],DEC);
-    //    Serial.print("  ci=");
-    //    Serial.println(ci);
-    //    Serial.end();
     switch((nma[tb]&0xff)) {
     case 128:
       ci+=1;
@@ -347,10 +341,6 @@ int mask2cidr(IPAddress nma) {
       return(-2);
     }
   }
-  //  Serial.begin(115200);
-  //  Serial.print("return mask2cidr=");
-  //  Serial.println(ci,DEC);
-  //  Serial.end();
   return(ci);
 }
 

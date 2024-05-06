@@ -7,6 +7,8 @@
 ################################################
 stM304	KEYWORD1
 uecsM304 KEYWORD1
+uecsM304Sched KEYWORD1
+uecsM304Send KEYWORD1
 uecsM304cmpope KEYWORD1
 KYBDMEM	KEYWORD1
 

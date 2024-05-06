@@ -1,7 +1,7 @@
 # M304 Library
 M304 Library
 
-Ver: 1.3.16
+Ver: 1.3.18
 
 
 ## Objectives
@@ -13,6 +13,10 @@ Build and install the UECS device (node) by yourself.
 Provide the basic system portion, as it is very difficult to do.
 
 Development of hardware and software that everyone can use.
+
+Important!
+
+M304-lowcode v3.x.x you must need this library this version.
 
 ## Photo
 
