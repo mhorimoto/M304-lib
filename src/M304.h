@@ -125,7 +125,7 @@ typedef struct stM304 {
   int cidr;
 };
 
-#if M304V3 // Ver 3.x.x以降のメモリマップ
+#ifdef M304V3 // Ver 3.x.x以降のメモリマップ
 //
 //  SCHEDULE(previous RX) Table
 //
