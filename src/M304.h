@@ -180,6 +180,8 @@ typedef struct uecsM304Sched {
   byte mnflag;       // 0x05
   unsigned int inmn; // 0x06
   unsigned int dumn; // 0x08
+  byte stsc;         // 0x09
+  byte edsc;         // 0x0a
   byte rly_l;        // 0x0e
   byte rly_h;        // 0x0f
   byte cmbcmp[5];    // 0:R_OR,1:0x16,2:0x1d,3:0x24,4:0x2b
@@ -359,6 +361,8 @@ typedef struct uecsM304cmpope {
 #define R_OR     7     // |  Logical OR
 #define R_NE     8     // != Not Equal
 #define R_ADDFLG 0x80
+#define R_ADD_GT R_ADDFLG|R_GT
+#define R_ADD_LT R_ADDFLG|R_LT
 
 /*  Relay operation          */
 /*  Group semi 20230615 p.9  */
