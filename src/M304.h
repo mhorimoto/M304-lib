@@ -139,9 +139,9 @@ typedef struct stM304 {
 #define   LC_SCH_MNFLAG       0x05 // MINUTES/SECONDS FLAG (FF:MINUTES,00:SECONDS)
 #define   LC_SCH_INMN         0x06 // Interval time (mins/sec) unsigned int (2bytes)
 #define   LC_SCH_DUMN         0x08 // During time (mins/sec) unsigned int (2bytes)
-#define   LC_SCH_STSC         0x09 // Start of time (Second)
-#define   LC_SCH_EDSC         0x0a // End of time (Second)
-//define  LC_SCH_DUMMY        0x0b-0x0d (3bytes)
+#define   LC_SCH_STSC         0x0a // Start of time (Second)
+#define   LC_SCH_EDSC         0x0b // End of time (Second)
+//define  LC_SCH_DUMMY        0x0c-0x0d (2bytes)
 #define   LC_SCH_RLY_L        0x0e // RLY 1..4
 #define   LC_SCH_RLY_H        0x0f // RLY 5..8
 #define   LC_SCH_CPXCONDS     0x10 // Complex Conditions 16bytes but current 8bytes
