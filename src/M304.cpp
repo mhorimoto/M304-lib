@@ -1,5 +1,5 @@
 #define _M304_CPP_
-#define _M304_CPP_V  1315
+#define _M304_CPP_V  1321
 #include <M304.h>
 
 extern char *pgname;

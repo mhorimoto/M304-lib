@@ -1,7 +1,7 @@
 # M304 Library
 M304 Library
 
-Ver: 1.3.18
+Ver: 1.3.21
 
 
 ## Objectives
@@ -16,7 +16,7 @@ Development of hardware and software that everyone can use.
 
 Important!
 
-M304-lowcode v3.x.x you must need this library this version.
+M304-lowcode v3.2.x you must need this library this version.
 
 ## Photo
 
